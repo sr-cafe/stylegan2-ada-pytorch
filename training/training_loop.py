@@ -366,6 +366,7 @@ def training_loop(
 			if rank == 0:
 				with open(snapshot_pkl, 'wb') as f:
 					pickle.dump(snapshot_data, f)
+				print(f'Snapshot saved: network-snapshot-{cur_nimg//1000:06d}')
 
 		# Evaluate metrics.
 		if (snapshot_data is not None) and (len(metrics) > 0):

@@ -134,14 +134,14 @@ def noiseloop(nf, d, seed):
 	features = []
 	zs = []
 	for i in range(512):
-	  features.append(OSN(i+seed,d))
+		features.append(OSN(i+seed,d))
 
 	inc = (np.pi*2)/nf
 	for f in range(nf):
-	  z = np.random.randn(1, 512)
-	  for i in range(512):
-		z[0,i] = features[i].get_val(inc*f)
-	  zs.append(z)
+		z = np.random.randn(1, 512)
+		for i in range(512):
+			z[0,i] = features[i].get_val(inc*f)
+		zs.append(z)
 
 	return zs
 
