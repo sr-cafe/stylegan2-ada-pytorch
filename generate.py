@@ -217,8 +217,9 @@ def slerp(t, v0, v1, DOT_THRESHOLD=0.9995):
 	Returns:
 		v2 (np.ndarray): Interpolation vector between v0 and v1
 	'''
-	v0 = v0.cpu().detach().numpy()
-	v1 = v1.cpu().detach().numpy()
+	# TODO Check this
+	# v0 = v0.cpu().detach().numpy()
+	# v1 = v1.cpu().detach().numpy()
 	# Copy the vectors to reuse them later
 	v0_copy = np.copy(v0)
 	v1_copy = np.copy(v1)
