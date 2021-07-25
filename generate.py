@@ -203,6 +203,19 @@ def seeds_to_zs(G,seeds):
 		zs.append(z)
 	return zs
 
+def lerp(t, v0, v1):
+	'''
+	Linear interpolation
+	Args:
+		t (float/np.ndarray): Value between 0.0 and 1.0
+		v0 (np.ndarray): Starting vector
+		v1 (np.ndarray): Final vector
+	Returns:
+		v2 (np.ndarray): Interpolation vector between v0 and v1
+	'''
+	v2 = (1.0 - t) * v0 + t * v1
+	return v2
+
 # slightly modified version of
 # https://github.com/PDillis/stylegan2-fun/blob/master/run_generator.py#L399
 def slerp(t, v0, v1, DOT_THRESHOLD=0.9995):
@@ -217,9 +230,8 @@ def slerp(t, v0, v1, DOT_THRESHOLD=0.9995):
 	Returns:
 		v2 (np.ndarray): Interpolation vector between v0 and v1
 	'''
-	# TODO Check this
-	# v0 = v0.cpu().detach().numpy()
-	# v1 = v1.cpu().detach().numpy()
+	v0 = v0.cpu().detach().numpy()
+	v1 = v1.cpu().detach().numpy()
 	# Copy the vectors to reuse them later
 	v0_copy = np.copy(v0)
 	v1_copy = np.copy(v1)
